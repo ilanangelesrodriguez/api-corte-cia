@@ -1,9 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { setupSwagger } from './infrastructure/utils/swagger';
 
 dotenv.config();
 
 const app = express();
+
+// Configurar Swagger
+setupSwagger(app);
 
 app.get('/', (req, res) => {
     res.json({
