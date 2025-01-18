@@ -25,7 +25,7 @@ const options = {
       },
     ],
   },
-  apis: ['./src/routes/*.ts', './src/domain/entities/enums/*.ts'], // Añade la ruta al archivo del enum
+  apis: ['./src/routes/*.ts', './src/domain/entities/enums/*.ts', './src/domain/entities/*.ts'],
 };
 
 const specs = swaggerJsdoc(options);
