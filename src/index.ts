@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { setupSwagger } from './infrastructure/utils/swagger';
+import './infrastructure/persistence/mongoConnection'; // Importa la conexión a MongoDB
 
 dotenv.config();
 
