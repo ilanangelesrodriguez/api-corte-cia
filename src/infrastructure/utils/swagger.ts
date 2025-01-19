@@ -30,11 +30,17 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+const JS_BUNDLE_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js";
+const JS_STANDALONE_PRESET_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js";
 
 export function setupSwagger(app: Express) {
   app.use(
     '/api-docs', 
     swaggerUi.serve, 
-    swaggerUi.setup(specs, { customCssUrl: CSS_URL })
+    swaggerUi.setup(specs, { 
+      customCssUrl: CSS_URL,
+      customJsUrl: JS_BUNDLE_URL,
+      customJsStandalonePresetUrl: JS_STANDALONE_PRESET_URL
+    })
   );
 }
