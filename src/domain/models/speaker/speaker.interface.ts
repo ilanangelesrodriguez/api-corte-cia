@@ -5,7 +5,7 @@ import { IEvent } from '../event/event.interface';
  * @swagger
  * components:
  *   schemas:
- *     Speaker:
+ *     ISpeaker:
  *       type: object
  *       required:
  *         - fullName

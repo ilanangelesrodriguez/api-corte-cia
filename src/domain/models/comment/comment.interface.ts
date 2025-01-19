@@ -4,7 +4,7 @@ import { Document, Types } from 'mongoose';
  * @swagger
  * components:
  *   schemas:
- *     Comment:
+ *     IComment:
  *       type: object
  *       required:
  *         - attendeeId

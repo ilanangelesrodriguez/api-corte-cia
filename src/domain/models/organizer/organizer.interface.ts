@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
  * @swagger
  * components:
  *   schemas:
- *     Organizer:
+ *     IOrganizer:
  *       type: object
  *       required:
  *         - name
