@@ -2,6 +2,8 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Express } from 'express';
 
+const port = parseInt(process.env.PORT || '3000');
+
 const options = {
   definition: {
     openapi: '3.0.0',
@@ -10,6 +12,16 @@ const options = {
       version: '1.0.0',
       description: 'Esta API proporciona servicios para la gestión de eventos, incluyendo la administración de asistentes, ponentes, y más.',
     },
+    servers: [
+      {
+        url: "https://api-corte-cia.vercel.app/",
+        description: "API de Gestión de Eventos - Documentación",
+      },
+      {
+        url: `http://localhost:${port}/`,
+        description: "Servidor Local",
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -29,9 +41,7 @@ const options = {
 };
 
 const specs = swaggerJsdoc(options);
-const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
-const JS_BUNDLE_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js";
-const JS_STANDALONE_PRESET_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js";
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css";
 
 export function setupSwagger(app: Express) {
   app.use(
@@ -39,8 +49,6 @@ export function setupSwagger(app: Express) {
     swaggerUi.serve, 
     swaggerUi.setup(specs, { 
       customCssUrl: CSS_URL,
-      customJsUrl: JS_BUNDLE_URL,
-      customJsStandalonePresetUrl: JS_STANDALONE_PRESET_URL
     })
   );
 }
