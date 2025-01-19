@@ -41,14 +41,11 @@ const options = {
 };
 
 const specs = swaggerJsdoc(options);
-const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css";
 
 export function setupSwagger(app: Express) {
   app.use(
     '/api-docs', 
     swaggerUi.serve, 
-    swaggerUi.setup(specs, { 
-      customCssUrl: CSS_URL,
-    })
+    swaggerUi.setup(specs)
   );
 }
