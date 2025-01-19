@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { setupSwagger } from './infrastructure/utils/swagger';
 import './infrastructure/persistence/mongoConnection'; // Importa la conexión a MongoDB
+import routes from './infrastructure/routes';
 
 dotenv.config();
 
@@ -17,18 +18,20 @@ app.get('/', (req, res) => {
         description: "Esta API proporciona servicios para la gestión de eventos, incluyendo la administración de asistentes, ponentes, y más.",
         documentation: "http://localhost:3000/api-docs",
         endpoints: [
-            "/events",
-            "/organizers",
-            "/speakers",
-            "/attendees",
-            "/tickets",
-            "/sponsors",
-            "/locations",
-            "/categories",
-            "/comments"
+            "/v1/api/events",
+            "/v1/api/organizers",
+            "/v1/api/speakers",
+            "/v1/api/attendees",
+            "/v1/api/tickets",
+            "/v1/api/sponsors",
+            "/v1/api/locations",
+            "/v1/api/categories",
+            "/v1/api/comments"
         ]
     });
 });
+
+app.use('/v1/api', routes);
 
 const port = parseInt(process.env.PORT || '3000');
 app.listen(port, () => {
