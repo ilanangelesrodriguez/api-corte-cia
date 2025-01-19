@@ -1,5 +1,4 @@
-import { IEvent } from "../models/event/event.interface";
-import EventModel from '../models/event/event.model';
+import { EventModel, IEvent } from "../models/event";
 
 class EventRepository {
     async createEvent(eventData: IEvent): Promise<IEvent> {
