@@ -5,41 +5,47 @@ import { Document } from 'mongoose';
  * @swagger
  * components:
  *   schemas:
- *     Event:
+ *     IEvent:
  *       type: object
+ *       required:
+ *         - name
+ *         - description
+ *         - startDate
+ *         - endDate
+ *         - location
+ *         - eventType
+ *         - status
+ *         - category
  *       properties:
- *         id:
- *           type: string
- *           description: ID único (Primary Key)
  *         name:
  *           type: string
- *           description: Nombre del evento
+ *           description: El nombre del evento.
  *         description:
  *           type: string
- *           description: Descripción breve del evento
+ *           description: Una breve descripción del evento.
  *         startDate:
  *           type: string
  *           format: date-time
- *           description: Fecha y hora de inicio del evento
+ *           description: La fecha y hora de inicio del evento.
  *         endDate:
  *           type: string
  *           format: date-time
- *           description: Fecha y hora de finalización
+ *           description: La fecha y hora de finalización del evento.
  *         location:
  *           type: string
- *           description: Ubicación del evento
+ *           description: El lugar donde se llevará a cabo el evento.
  *         eventType:
- *           $ref: '#/components/schemas/EventType'
- *           description: Tipo de evento
+ *           type: string
+ *           description: El tipo de evento.
  *         status:
- *           $ref: '#/components/schemas/EventStatus'
- *           description: Estado del evento
+ *           type: string
+ *           description: El estado actual del evento.
  *         category:
- *           $ref: '#/components/schemas/CategoryName'
- *           description: Categoría del evento
+ *           type: string
+ *           description: El nombre de la categoría del evento.
  *         image:
  *           type: string
- *           description: Imagen opcional
+ *           description: Una URL opcional de la imagen del evento.
  */
 export interface IEvent extends Document {
     name: string;
