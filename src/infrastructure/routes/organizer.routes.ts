@@ -5,6 +5,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Organizadores
+ *   description: Operaciones relacionadas con organizadores
+ */
+
+/**
+ * @swagger
  * /v1/api/organizers:
  *   post:
  *     summary: Crear un nuevo organizador

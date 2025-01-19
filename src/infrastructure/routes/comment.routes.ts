@@ -5,6 +5,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Comentarios
+ *   description: Operaciones relacionadas con comentarios
+ */
+
+/**
+ * @swagger
  * /v1/api/comments:
  *   post:
  *     summary: Crear un nuevo comentario

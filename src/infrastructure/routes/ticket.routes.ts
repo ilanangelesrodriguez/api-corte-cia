@@ -5,6 +5,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Tickets
+ *   description: Operaciones relacionadas con tickets
+ */
+
+/**
+ * @swagger
  * /v1/api/tickets:
  *   post:
  *     summary: Crear un nuevo ticket

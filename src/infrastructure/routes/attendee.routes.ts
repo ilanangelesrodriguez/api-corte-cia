@@ -5,6 +5,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Asistentes
+ *   description: Operaciones relacionadas con asistentes
+ */
+
+/**
+ * @swagger
  * /v1/api/attendees:
  *   post:
  *     summary: Crear un nuevo asistente
