@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
         message: "Bienvenido a la API de Gestión de Eventos - Corte & Cía",
         version: "1.0",
         description: "Esta API proporciona servicios para la gestión de eventos, incluyendo la administración de asistentes, ponentes, y más.",
-        documentation: "http://localhost:3000/api-docs",
+        documentation: process.env.API_DOCUMENTATION_URL || "http://localhost:3000/api-docs",
         endpoints: [
             "/v1/api/events",
             "/v1/api/organizers",

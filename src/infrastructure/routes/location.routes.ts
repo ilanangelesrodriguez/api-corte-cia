@@ -5,6 +5,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Ubicaciones
+ *   description: Operaciones relacionadas con ubicaciones
+ */
+
+/**
+ * @swagger
  * /v1/api/locations:
  *   post:
  *     summary: Crear una nueva ubicación

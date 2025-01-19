@@ -5,6 +5,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Patrocinadores
+ *   description: Operaciones relacionadas con patrocinadores
+ */
+
+/**
+ * @swagger
  * /v1/api/sponsors:
  *   post:
  *     summary: Crear un nuevo patrocinador

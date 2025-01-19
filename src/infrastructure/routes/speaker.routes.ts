@@ -5,6 +5,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Ponentes
+ *   description: Operaciones relacionadas con ponentes
+ */
+
+/**
+ * @swagger
  * /v1/api/speakers:
  *   post:
  *     summary: Crear un nuevo ponente

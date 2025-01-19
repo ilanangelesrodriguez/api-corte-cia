@@ -5,6 +5,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Eventos
+ *   description: Operaciones relacionadas con eventos
+ */
+
+/**
+ * @swagger
  * /v1/api/events:
  *   post:
  *     summary: Crear un nuevo evento
