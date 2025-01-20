@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { IOrganizer } from './organizer.interface';
+import bcrypt from 'bcryptjs';
 
 const OrganizerSchema: Schema<IOrganizer> = new Schema(
   {
@@ -12,5 +13,14 @@ const OrganizerSchema: Schema<IOrganizer> = new Schema(
   },
   { timestamps: true }
 );
+
+// Hashear la contraseña antes de guardar el documento
+OrganizerSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) return next();
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt); // Hasheamos la contraseña
+  next();
+});
 
 export default mongoose.model<IOrganizer>('Organizer', OrganizerSchema);

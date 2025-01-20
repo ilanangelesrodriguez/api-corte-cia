@@ -3,10 +3,14 @@ import dotenv from 'dotenv';
 import { setupSwagger } from './infrastructure/utils/swagger';
 import './infrastructure/persistence/mongoConnection'; // Importa la conexión a MongoDB
 import routes from './infrastructure/routes';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configurar Swagger
 setupSwagger(app);
