@@ -2,8 +2,6 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Express } from 'express';
 
-const port = parseInt(process.env.PORT || '3000');
-
 const options = {
   definition: {
     openapi: '3.0.0',
@@ -12,16 +10,6 @@ const options = {
       version: '1.0.0',
       description: 'Esta API proporciona servicios para la gestión de eventos, incluyendo la administración de asistentes, ponentes, y más.',
     },
-    servers: [
-      {
-        url: "https://api-corte-cia.vercel.app/",
-        description: "API de Gestión de Eventos - Documentación",
-      },
-      {
-        url: `http://localhost:${port}/`,
-        description: "Servidor Local",
-      },
-    ],
     components: {
       securitySchemes: {
         bearerAuth: {
