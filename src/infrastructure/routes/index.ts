@@ -7,6 +7,7 @@ import attendeeRoutes from './attendee.routes';
 import speakerRoutes from './speaker.routes';
 import organizerRoutes from './organizer.routes';
 import eventRoutes from './event.routes';
+import adminRoutes from './admin.routes';
 
 const router = Router();
 
@@ -18,5 +19,6 @@ router.use(attendeeRoutes);
 router.use(speakerRoutes);
 router.use(organizerRoutes);
 router.use(eventRoutes);
+router.use(adminRoutes)
 
 export default router;

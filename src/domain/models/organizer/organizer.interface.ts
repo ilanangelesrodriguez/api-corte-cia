@@ -10,6 +10,8 @@ import { Document } from 'mongoose';
  *         - name
  *         - description
  *         - contact
+ *         - email
+ *         - password
  *       properties:
  *         name:
  *           type: string
@@ -23,10 +25,18 @@ import { Document } from 'mongoose';
  *         website:
  *           type: string
  *           description: (Opcional) Sitio web del organizador.
+ *         email:
+ *           type: string
+ *           description: El correo electrónico del organizador.
+ *         password:
+ *           type: string
+ *           description: La contraseña del organizador.
  */
 export interface IOrganizer extends Document {
   name: string;
   description: string;
   contact: string;
   website?: string;
+  email: string;
+  password: string;
 }
