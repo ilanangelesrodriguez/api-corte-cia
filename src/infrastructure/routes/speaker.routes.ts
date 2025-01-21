@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import SpeakerController from '../../application/controller/speaker.controller';
+import { authenticateJWT } from '../middleware/auth';
 
 const router = Router();
 
@@ -32,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/speakers', SpeakerController.createSpeaker);
+router.post('/speakers', authenticateJWT, SpeakerController.createSpeaker);
 
 /**
  * @swagger
@@ -59,7 +60,7 @@ router.post('/speakers', SpeakerController.createSpeaker);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/speakers/:id', SpeakerController.getSpeakerById);
+router.get('/speakers/:id', authenticateJWT, SpeakerController.getSpeakerById);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.get('/speakers/:id', SpeakerController.getSpeakerById);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/speakers/:id', SpeakerController.updateSpeaker);
+router.put('/speakers/:id', authenticateJWT, SpeakerController.updateSpeaker);
 
 /**
  * @swagger
@@ -115,7 +116,7 @@ router.put('/speakers/:id', SpeakerController.updateSpeaker);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/speakers/:id', SpeakerController.deleteSpeaker);
+router.delete('/speakers/:id', authenticateJWT, SpeakerController.deleteSpeaker);
 
 /**
  * @swagger
@@ -135,6 +136,6 @@ router.delete('/speakers/:id', SpeakerController.deleteSpeaker);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/speakers', SpeakerController.getAllSpeakers);
+router.get('/speakers', authenticateJWT, SpeakerController.getAllSpeakers);
 
 export default router;

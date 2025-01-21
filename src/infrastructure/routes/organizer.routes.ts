@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import OrganizerController from '../../application/controller/organizer.controller';
+import { authenticateJWT } from '../middleware/auth';
 
 const router = Router();
 
@@ -32,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/organizers', OrganizerController.createOrganizer);
+router.post('/organizers', authenticateJWT, OrganizerController.createOrganizer);
 
 /**
  * @swagger
@@ -59,7 +60,7 @@ router.post('/organizers', OrganizerController.createOrganizer);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/organizers/:id', OrganizerController.getOrganizerById);
+router.get('/organizers/:id', authenticateJWT, OrganizerController.getOrganizerById);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.get('/organizers/:id', OrganizerController.getOrganizerById);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/organizers/:id', OrganizerController.updateOrganizer);
+router.put('/organizers/:id', authenticateJWT, OrganizerController.updateOrganizer);
 
 /**
  * @swagger
@@ -115,7 +116,7 @@ router.put('/organizers/:id', OrganizerController.updateOrganizer);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/organizers/:id', OrganizerController.deleteOrganizer);
+router.delete('/organizers/:id', authenticateJWT, OrganizerController.deleteOrganizer);
 
 /**
  * @swagger
@@ -135,6 +136,6 @@ router.delete('/organizers/:id', OrganizerController.deleteOrganizer);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/organizers', OrganizerController.getAllOrganizers);
+router.get('/organizers', authenticateJWT, OrganizerController.getAllOrganizers);
 
 export default router;
