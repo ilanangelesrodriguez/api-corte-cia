@@ -29,7 +29,6 @@ app.get('/', (req, res) => {
             "/v1/api/tickets",
             "/v1/api/sponsors",
             "/v1/api/locations",
-            "/v1/api/categories",
             "/v1/api/comments"
         ]
     });
