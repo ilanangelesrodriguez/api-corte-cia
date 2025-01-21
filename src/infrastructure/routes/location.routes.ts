@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import LocationController from '../../application/controller/location.controller';
+import { authenticateJWT } from '../middleware/auth';
 
 const router = Router();
 
@@ -32,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/locations', LocationController.createLocation);
+router.post('/locations', authenticateJWT, LocationController.createLocation);
 
 /**
  * @swagger
@@ -59,7 +60,7 @@ router.post('/locations', LocationController.createLocation);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/locations/:id', LocationController.getLocationById);
+router.get('/locations/:id', authenticateJWT, LocationController.getLocationById);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.get('/locations/:id', LocationController.getLocationById);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/locations/:id', LocationController.updateLocation);
+router.put('/locations/:id', authenticateJWT, LocationController.updateLocation);
 
 /**
  * @swagger
@@ -115,7 +116,7 @@ router.put('/locations/:id', LocationController.updateLocation);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/locations/:id', LocationController.deleteLocation);
+router.delete('/locations/:id', authenticateJWT, LocationController.deleteLocation);
 
 /**
  * @swagger
@@ -135,6 +136,6 @@ router.delete('/locations/:id', LocationController.deleteLocation);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/locations', LocationController.getAllLocations);
+router.get('/locations', authenticateJWT, LocationController.getAllLocations);
 
 export default router;

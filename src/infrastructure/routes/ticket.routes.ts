@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import TicketController from '../../application/controller/ticket.controller';
+import { authenticateJWT } from '../middleware/auth';
 
 const router = Router();
 
@@ -32,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/tickets', TicketController.createTicket);
+router.post('/tickets', authenticateJWT, TicketController.createTicket);
 
 /**
  * @swagger
@@ -59,7 +60,7 @@ router.post('/tickets', TicketController.createTicket);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/tickets/:id', TicketController.getTicketById);
+router.get('/tickets/:id', authenticateJWT, TicketController.getTicketById);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.get('/tickets/:id', TicketController.getTicketById);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/tickets/:id', TicketController.updateTicket);
+router.put('/tickets/:id', authenticateJWT, TicketController.updateTicket);
 
 /**
  * @swagger
@@ -115,7 +116,7 @@ router.put('/tickets/:id', TicketController.updateTicket);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/tickets/:id', TicketController.deleteTicket);
+router.delete('/tickets/:id', authenticateJWT, TicketController.deleteTicket);
 
 /**
  * @swagger
@@ -135,6 +136,6 @@ router.delete('/tickets/:id', TicketController.deleteTicket);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/tickets', TicketController.getAllTickets);
+router.get('/tickets', authenticateJWT, TicketController.getAllTickets);
 
 export default router;

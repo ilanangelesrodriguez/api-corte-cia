@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import SponsorController from '../../application/controller/sponsor.controller';
+import { authenticateJWT } from '../middleware/auth';
 
 const router = Router();
 
@@ -32,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/sponsors', SponsorController.createSponsor);
+router.post('/sponsors', authenticateJWT, SponsorController.createSponsor);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.get('/sponsors/:id', SponsorController.getSponsorById);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/sponsors/:id', SponsorController.updateSponsor);
+router.put('/sponsors/:id', authenticateJWT, SponsorController.updateSponsor);
 
 /**
  * @swagger
@@ -115,7 +116,7 @@ router.put('/sponsors/:id', SponsorController.updateSponsor);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/sponsors/:id', SponsorController.deleteSponsor);
+router.delete('/sponsors/:id', authenticateJWT, SponsorController.deleteSponsor);
 
 /**
  * @swagger

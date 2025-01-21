@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import CommentController from '../../application/controller/comment.controller';
+import { authenticateJWT } from '../middleware/auth';
 
 const router = Router();
 
@@ -32,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/comments', CommentController.createComment);
+router.post('/comments', authenticateJWT, CommentController.createComment);
 
 /**
  * @swagger
@@ -59,7 +60,7 @@ router.post('/comments', CommentController.createComment);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/comments/:id', CommentController.getCommentById);
+router.get('/comments/:id', authenticateJWT, CommentController.getCommentById);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.get('/comments/:id', CommentController.getCommentById);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/comments/:id', CommentController.updateComment);
+router.put('/comments/:id', authenticateJWT, CommentController.updateComment);
 
 /**
  * @swagger
@@ -115,7 +116,7 @@ router.put('/comments/:id', CommentController.updateComment);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/comments/:id', CommentController.deleteComment);
+router.delete('/comments/:id', authenticateJWT, CommentController.deleteComment);
 
 /**
  * @swagger
@@ -135,6 +136,6 @@ router.delete('/comments/:id', CommentController.deleteComment);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/comments', CommentController.getAllComments);
+router.get('/comments', authenticateJWT, CommentController.getAllComments);
 
 export default router;

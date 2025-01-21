@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import EventController from '../../application/controller/event.controller';
+import { authenticateJWT } from '../middleware/auth';
 
 const router = Router();
 
@@ -32,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/events', EventController.createEvent);
+router.post('/events', authenticateJWT, EventController.createEvent);
 
 /**
  * @swagger
@@ -59,7 +60,7 @@ router.post('/events', EventController.createEvent);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/events/:id', EventController.getEventById);
+router.get('/events/:id', authenticateJWT, EventController.getEventById);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.get('/events/:id', EventController.getEventById);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/events/:id', EventController.updateEvent);
+router.put('/events/:id', authenticateJWT, EventController.updateEvent);
 
 /**
  * @swagger
@@ -115,7 +116,7 @@ router.put('/events/:id', EventController.updateEvent);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/events/:id', EventController.deleteEvent);
+router.delete('/events/:id', authenticateJWT, EventController.deleteEvent);
 
 /**
  * @swagger
@@ -135,6 +136,6 @@ router.delete('/events/:id', EventController.deleteEvent);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/events', EventController.getAllEvents);
+router.get('/events', authenticateJWT, EventController.getAllEvents);
 
 export default router;

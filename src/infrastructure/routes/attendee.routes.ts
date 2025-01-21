@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import AttendeeController from '../../application/controller/attendee.controller';
+import { authenticateJWT } from '../middleware/auth';
 
 const router = Router();
 
@@ -32,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/attendees', AttendeeController.createAttendee);
+router.post('/attendees', authenticateJWT, AttendeeController.createAttendee);
 
 /**
  * @swagger
@@ -59,7 +60,7 @@ router.post('/attendees', AttendeeController.createAttendee);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/attendees/:id', AttendeeController.getAttendeeById);
+router.get('/attendees/:id', authenticateJWT, AttendeeController.getAttendeeById);
 
 /**
  * @swagger
@@ -92,7 +93,7 @@ router.get('/attendees/:id', AttendeeController.getAttendeeById);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/attendees/:id', AttendeeController.updateAttendee);
+router.put('/attendees/:id', authenticateJWT, AttendeeController.updateAttendee);
 
 /**
  * @swagger
@@ -115,7 +116,7 @@ router.put('/attendees/:id', AttendeeController.updateAttendee);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/attendees/:id', AttendeeController.deleteAttendee);
+router.delete('/attendees/:id', authenticateJWT, AttendeeController.deleteAttendee);
 
 /**
  * @swagger
@@ -135,6 +136,6 @@ router.delete('/attendees/:id', AttendeeController.deleteAttendee);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/attendees', AttendeeController.getAllAttendees);
+router.get('/attendees', authenticateJWT, AttendeeController.getAllAttendees);
 
 export default router;
