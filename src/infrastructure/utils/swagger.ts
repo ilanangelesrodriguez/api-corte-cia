@@ -7,7 +7,7 @@ const options = {
     openapi: '3.0.0',
     info: {
       title: 'API de Gestión de Eventos - Corte & Cía',
-      version: '1.0.0',
+      version: '1.1.0',
       description: 'Esta API proporciona servicios para la gestión de eventos, incluyendo la administración de asistentes, ponentes, y más.',
     },
     components: {
