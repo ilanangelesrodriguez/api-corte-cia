@@ -10,7 +10,52 @@ dotenv.config();
 const router = Router();
 const secret = process.env.JWT_SECRET || 'default_secret';
 
-router.post('/login', async (req, res) => {
+/**
+ * @swagger
+ * tags:
+ *   name: Autenticación
+ *   description: Operaciones relacionadas con la autenticación
+ */
+
+/**
+ * @swagger
+ * /v1/api/auth/login:
+ *   post:
+ *     summary: Iniciar sesión
+ *     tags: [Autenticación]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: Correo electrónico del usuario
+ *               password:
+ *                 type: string
+ *                 description: Contraseña del usuario
+ *     responses:
+ *       200:
+ *         description: Inicio de sesión exitoso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: Token JWT
+ *                 user:
+ *                   type: object
+ *                   description: Información del usuario
+ *       401:
+ *         description: Correo electrónico o contraseña inválidos
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.post('/auth/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -30,16 +75,16 @@ router.post('/login', async (req, res) => {
         }
 
         if (!user) {
-            return res.status(401).json({ message: 'Invalid email or password' });
+            return res.status(401).json({ message: 'Correo electrónico o contraseña inválidos' });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid email or password' });
+            return res.status(401).json({ message: 'Correo electrónico o contraseña inválidos' });
         }
 
         const token = jwt.sign({ id: user._id, role }, secret, { expiresIn: '1h' });
-        res.json({ token });
+        res.json({ token, user });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
