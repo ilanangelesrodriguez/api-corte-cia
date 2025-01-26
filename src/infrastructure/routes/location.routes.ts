@@ -60,7 +60,7 @@ router.post('/locations', authenticateJWT, LocationController.createLocation);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/locations/:id', authenticateJWT, LocationController.getLocationById);
+router.get('/locations/:id', LocationController.getLocationById);
 
 /**
  * @swagger
@@ -136,6 +136,6 @@ router.delete('/locations/:id', authenticateJWT, LocationController.deleteLocati
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/locations', authenticateJWT, LocationController.getAllLocations);
+router.get('/locations', LocationController.getAllLocations);
 
 export default router;

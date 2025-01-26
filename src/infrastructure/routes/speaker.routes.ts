@@ -136,6 +136,6 @@ router.delete('/speakers/:id', authenticateJWT, SpeakerController.deleteSpeaker)
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/speakers', authenticateJWT, SpeakerController.getAllSpeakers);
+router.get('/speakers', SpeakerController.getAllSpeakers);
 
 export default router;
