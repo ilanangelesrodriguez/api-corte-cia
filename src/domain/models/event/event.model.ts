@@ -46,7 +46,8 @@ import { EventStatus, EventType, CategoryName } from '../../enums';
  *           description: El nombre de la categoría del evento.
  *         image:
  *           type: string
- *           description: Una URL opcional de la imagen del evento.
+ *           format: binary
+ *           description: Una imagen opcional del evento.
  */
 const EventSchema: Schema<IEvent> = new Schema(
   {
@@ -58,7 +59,7 @@ const EventSchema: Schema<IEvent> = new Schema(
     eventType: { type: String, enum: Object.values(EventType), required: true },
     status: { type: String, enum: Object.values(EventStatus), default: EventStatus.Active },
     category: { type: String, enum: Object.values(CategoryName), required: true },
-    image: { type: String, required: false }
+    image: { type: Buffer, required: false }
   },
   { timestamps: true }
 );

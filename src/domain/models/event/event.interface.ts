@@ -45,7 +45,8 @@ import { Document } from 'mongoose';
  *           description: El nombre de la categoría del evento.
  *         image:
  *           type: string
- *           description: Una URL opcional de la imagen del evento.
+ *           format: binary
+ *           description: Una imagen opcional del evento.
  */
 export interface IEvent extends Document {
     name: string;
@@ -56,5 +57,5 @@ export interface IEvent extends Document {
     eventType: EventType;
     status: EventStatus;
     category: CategoryName;
-    image?: string;
+    image?: Buffer;
 }
