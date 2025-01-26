@@ -33,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/attendees', authenticateJWT, AttendeeController.createAttendee);
+router.post('/attendees', AttendeeController.createAttendee);
 
 /**
  * @swagger
@@ -60,7 +60,7 @@ router.post('/attendees', authenticateJWT, AttendeeController.createAttendee);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/attendees/:id', authenticateJWT, AttendeeController.getAttendeeById);
+router.get('/attendees/:id', AttendeeController.getAttendeeById);
 
 /**
  * @swagger

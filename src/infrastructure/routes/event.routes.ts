@@ -33,7 +33,7 @@ const router = Router();
  *       500:
  *         description: Error interno del servidor
  */
-router.post('/events', authenticateJWT, EventController.createEvent);
+router.post('/events', EventController.createEvent);
 
 /**
  * @swagger
@@ -60,7 +60,7 @@ router.post('/events', authenticateJWT, EventController.createEvent);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/events/:id', authenticateJWT, EventController.getEventById);
+router.get('/events/:id', EventController.getEventById);
 
 /**
  * @swagger
@@ -136,6 +136,6 @@ router.delete('/events/:id', authenticateJWT, EventController.deleteEvent);
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/events', authenticateJWT, EventController.getAllEvents);
+router.get('/events', EventController.getAllEvents);
 
 export default router;

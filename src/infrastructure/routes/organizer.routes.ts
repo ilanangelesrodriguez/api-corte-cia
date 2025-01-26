@@ -60,7 +60,7 @@ router.post('/organizers', authenticateJWT, OrganizerController.createOrganizer)
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/organizers/:id', authenticateJWT, OrganizerController.getOrganizerById);
+router.get('/organizers/:id', OrganizerController.getOrganizerById);
 
 /**
  * @swagger
@@ -136,6 +136,6 @@ router.delete('/organizers/:id', authenticateJWT, OrganizerController.deleteOrga
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/organizers', authenticateJWT, OrganizerController.getAllOrganizers);
+router.get('/organizers', OrganizerController.getAllOrganizers);
 
 export default router;
