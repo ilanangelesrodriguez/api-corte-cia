@@ -4,6 +4,7 @@ import { setupSwagger } from './infrastructure/utils/swagger';
 import './infrastructure/persistence/mongoConnection'; // Importa la conexión a MongoDB
 import routes from './infrastructure/routes';
 import bodyParser from 'body-parser';
+import corsMiddleware from './infrastructure/middleware/cors';
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(corsMiddleware);
 
 // Configurar Swagger
 setupSwagger(app);
