@@ -1,7 +1,7 @@
 import cors from 'cors';
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Permite solicitudes solo desde esta URL
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
   allowedHeaders: ['Content-Type', 'Authorization'], // Cabeceras permitidas
 };
