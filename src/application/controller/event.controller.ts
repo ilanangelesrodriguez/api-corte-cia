@@ -5,41 +5,28 @@ import cloudinary from 'cloudinary';
 
 class EventController {
     async createEvent(req: Request, res: Response): Promise<void> {
-        
         try {
-            // Usamos multer para cargar la imagen (si está presente)
             upload(req, res, async (err) => {
-              if (err) {
-                return res.status(400).json({ message: 'Error al cargar la imagen' });
-              }
-      
-              let imageUrl: string | undefined = undefined;
-      
-              // Si hay una imagen, la subimos a Cloudinary
-              if (req.file) {
-                const uploadResult = await cloudinary.v2.uploader.upload_stream(
-                  { resource_type: 'auto' }, // 'auto' para que Cloudinary detecte el tipo de archivo
-                  (error, result) => {
-                    if (error) {
-                      return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
+                if (err) {
+                    return res.status(400).json({ message: 'Error al cargar la imagen' });
+                }
+                let imageUrl: string | undefined = undefined;
+                if (req.file) {
+                    const uploadStream = promisify(cloudinary.v2.uploader.upload_stream);
+                    try {
+                        const result = await uploadStream({ resource_type: 'auto' }, req.file.buffer);
+                        imageUrl = result.secure_url;
+                    } catch (error) {
+                        return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
                     }
-                    imageUrl = result?.secure_url; // Obtenemos la URL segura de la imagen subida
-                  }
-                );
-      
-                // Guardamos la imagen en Cloudinary
-                uploadResult.end(req.file.buffer);
-              }
-      
-              // Creamos el evento con los datos de la solicitud
-              const eventData = { ...req.body, image: imageUrl }; // Añadimos la URL de la imagen
-              const event = await EventService.createEvent(eventData);
-      
-              res.status(201).json(event);
+                }
+                const eventData = { ...req.body, image: imageUrl };
+                const event = await EventService.createEvent(eventData);
+                res.status(201).json(event);
             });
-          } catch (error) {
+        } catch (error) {
             res.status(500).json({ message: error.message });
-          }
+        }
     }
 
     async getEventById(req: Request, res: Response): Promise<void> {
